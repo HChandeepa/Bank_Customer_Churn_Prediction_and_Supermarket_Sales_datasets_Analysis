@@ -11,7 +11,7 @@ unique(dataset)
 summary(dataset)
 
 #remove unnwanted columns
-columns_to_keep <- c(2,3, 4,5,6,7,8,9,10)
+columns_to_keep <- c(2,3, 4,5,6,7,8,9,10,11,12)
 dataset <- dataset[, columns_to_keep]
 dataset
 #convert values to numeric using label encoding
@@ -32,6 +32,22 @@ dim(training_dataset)
 
 testing_dataset<-subset(dataset,split_ratio==FALSE)
 dim(testing_dataset)
+
+#feature scaling
+# Identify the numeric columns to scale
+numeric_columns <- c("credit_score","country","gender","age","tenure","balance","products_number","credit_card","active_member","estimated_salary")
+numeric_columns<-c(2,3, 4,5,6,7,8,9,10,11,12)
+
+# Scale the numeric columns in the training dataset
+training_dataset[, columns_to_keep] <- scale(training_dataset[, columns_to_keep])
+
+# Scale the same columns in the testing dataset using the mean and standard deviation from the training dataset
+testing_dataset[, numeric_columns] <- scale(testing_dataset[, numeric_columns], center = attr(training_dataset[, numeric_columns], "scaled:center"), scale = attr(training_dataset[, numeric_columns], "scaled:scale"))
+# Check the column names of your dataset
+names(training_dataset)
+# or
+colnames(training_dataset)
+
 
 #boxplots to check outliers
 boxplot(data$age,horizontal = TRUE)#outlier found
