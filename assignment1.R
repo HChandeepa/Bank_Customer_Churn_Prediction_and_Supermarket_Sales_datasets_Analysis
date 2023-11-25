@@ -23,6 +23,16 @@ dataset$gender
 
 dataset
 
+library(caTools)
+library(caret)
+#splitting the dataset in training and testing
+split_ratio<-sample.split(dataset,SplitRatio = 0.8)
+training_dataset<-subset(dataset,split_ratio==TRUE)
+dim(training_dataset)
+
+testing_dataset<-subset(dataset,split_ratio==FALSE)
+dim(testing_dataset)
+
 #boxplots to check outliers
 boxplot(data$age,horizontal = TRUE)#outlier found
 boxplot(dataset$credit_score,horizontal = TRUE)#outliers found
