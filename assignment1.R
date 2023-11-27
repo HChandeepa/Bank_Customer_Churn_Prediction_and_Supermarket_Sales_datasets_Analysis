@@ -39,7 +39,7 @@ numeric_columns <- c("credit_score","country","gender","age","tenure","balance",
 numeric_columns<-c(2,3, 4,5,6,7,8,9,10,11,12)
 
 # Scale the numeric columns in the training dataset
-training_dataset[, columns_to_keep] <- scale(training_dataset[, columns_to_keep])
+training_dataset[, columns_to_keep] <- scale(training_dataset[,columns_to_keep])
 
 # Scale the same columns in the testing dataset using the mean and standard deviation from the training dataset
 testing_dataset[, numeric_columns] <- scale(testing_dataset[, numeric_columns], center = attr(training_dataset[, numeric_columns], "scaled:center"), scale = attr(training_dataset[, numeric_columns], "scaled:scale"))
