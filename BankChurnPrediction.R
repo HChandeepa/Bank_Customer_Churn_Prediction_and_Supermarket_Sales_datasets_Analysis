@@ -39,6 +39,7 @@ boxplot(dataset$age,horizontal = TRUE)
 boxplot(dataset$credit_score,horizontal = TRUE)
 
 
+#Naive baye's classifier
 set.seed(123)
 split_ratio<-sample.split(dataset,SplitRatio = 0.7)
 training_dataset<-subset(dataset,split_ratio==TRUE)
@@ -56,7 +57,6 @@ matrix<-table(testing_dataset$churn,predicted_results)
 confusionMatrix(matrix)
 
 
-
 library(ggplot2)
 #bar plot to visualize 'gender' distribution within 'country'
 ggplot(dataset, aes(x = country, fill = gender)) +
@@ -64,4 +64,6 @@ ggplot(dataset, aes(x = country, fill = gender)) +
   xlab("Country") +
   ylab("Count") +
   ggtitle("Gender Distribution Across Countries")
+
+
 
