@@ -1,3 +1,4 @@
+#importing the data set
 dataset<-read.csv("F:\\Year 2 Sem 1\\R programming\\My projects\\Assignment\\datasets\\Bank Customer Churn Prediction.csv")
 dataset
 
