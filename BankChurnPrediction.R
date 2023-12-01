@@ -54,3 +54,14 @@ table(predicted_results)
 
 matrix<-table(testing_dataset$churn,predicted_results)
 confusionMatrix(matrix)
+
+
+
+library(ggplot2)
+#bar plot to visualize 'gender' distribution within 'country'
+ggplot(dataset, aes(x = country, fill = gender)) +
+  geom_bar(position = "stack") +
+  xlab("Country") +
+  ylab("Count") +
+  ggtitle("Gender Distribution Across Countries")
+
