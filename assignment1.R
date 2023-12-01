@@ -40,7 +40,7 @@ testing_dataset<-scale(training_dataset[,1:12])
 
 
 #boxplots to check outliers
-boxplot(data$age,horizontal = TRUE)#outlier found
+boxplot(dataset$age,horizontal = TRUE)#outlier found
 boxplot(dataset$credit_score,horizontal = TRUE)#outliers found
 boxplot(dataset$tenure,horizontal = TRUE)
 boxplot(dataset$balance,horizontal = TRUE)
@@ -149,3 +149,15 @@ ggplot(dataset, aes(x = credit_card, fill = credit_card)) +
   ylab("Frequencies") +
   ggtitle("Credit card users in the bank") 
 
+library(e1071)
+library(caTools)
+library(caret)
+
+#training the model using naive bay's classifier
+set.seed(7000)
+model<-naiveBayes(Species~.,data = training_dataset)
+
+#testing the model using test data
+summary(testing_dataset)
+predicted_results<-predict(model,newdata = testing_dataset)
+table(predicted_results)
