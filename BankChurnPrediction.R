@@ -37,11 +37,32 @@ dataset<-dataset[!(dataset$credit_score%in%credit_score_status$out),]
 #boxplots after removing outliers
 boxplot(dataset$age,horizontal = TRUE)
 boxplot(dataset$credit_score,horizontal = TRUE)
+#-------------------------------------------------------------------------------#
+# Calculate statistics for 'age' column
+age_stats <- boxplot.stats(dataset$age)
+# Remove outliers from 'age' column
+dataset <-dataset[!(dataset$age %in% age_stats$out), ]
+boxplot(dataset$age,horizontal = TRUE)
+# Calculate statistics for 'age' column
+age_stats <- boxplot.stats(dataset$age)
+# Remove outliers from 'age' column
+dataset <-dataset[!(dataset$age %in% age_stats$out), ]
+boxplot(dataset$age,horizontal = TRUE)
+#-------------------------------------------------------------------------------#
 
+# Calculate statistics for 'credit_score' column
+credit_score_status<-boxplot.stats(dataset$credit_score)
+# Remove outliers from 'credit_score' column
+dataset<-dataset[!(dataset$credit_score%in%credit_score_status$out),]
+boxplot(dataset$credit_score,horizontal = TRUE)
+#-------------------------------------------------------------------------------#
+library(e1071)
+library(caret)
+library(caTools)
 
 #Naive baye's classifier
 set.seed(123)
-split_ratio<-sample.split(dataset,SplitRatio = 0.7)
+split_ratio<-sample.split(dataset,SplitRatio = 0.75)
 training_dataset<-subset(dataset,split_ratio==TRUE)
 testing_dataset<-subset(dataset,split_ratio==FALSE)
 
@@ -60,7 +81,7 @@ confusionMatrix(matrix)
 library(ggplot2)
 #bar plot to visualize 'gender' distribution within 'country'
 ggplot(dataset, aes(x = country, fill = gender)) +
-  geom_bar(position = "stack") +
+  geom_bar(position = "stack") +       
   xlab("Country") +
   ylab("Count") +
   ggtitle("Gender Distribution Across Countries")
