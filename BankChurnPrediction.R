@@ -108,5 +108,13 @@ ggplot(dataset, aes(x = country, fill = gender)) +
   ylab("Count") +
   ggtitle("Gender Distribution Across Countries")
 
+ggplot(dataset,aes(x=dataset$age))+
+  geom_histogram(binwidth = 0.3,color="black",aes(fill=churn))+
+  xlab("Age")+
+  ylab("frequency")+
+  ggtitle("Age distribution")
+
+
+
 
 
