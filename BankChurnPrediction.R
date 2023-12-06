@@ -19,6 +19,13 @@ ggplot(dataset, aes(x = country, fill = gender)) +
   ylab("Count") +
   ggtitle("Gender Distribution Across Countries")
 
+#scatter plot for Gender vs Age Scatter Plot
+ggplot(dataset, aes(x = age, y = gender)) +
+  geom_point() +
+  xlab("Age") +
+  ylab("Gender") +
+  ggtitle("Gender vs Age Scatter Plot")
+
 dataset$country<-as.numeric(factor(dataset$country))
 dataset$country
 
@@ -123,5 +130,7 @@ lbls <- paste(lbls, pct)
 lbls <- paste(lbls,"%",sep="")
 pie(slices,labels = lbls, col=rainbow(length(lbls)),
     main="Pie Chart of Countries")
+
+
 
 
