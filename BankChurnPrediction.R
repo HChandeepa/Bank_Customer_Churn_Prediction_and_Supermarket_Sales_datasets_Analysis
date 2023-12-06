@@ -108,13 +108,17 @@ ggplot(dataset, aes(x = country, fill = gender)) +
   ylab("Count") +
   ggtitle("Gender Distribution Across Countries")
 
-ggplot(dataset,aes(x=dataset$age))+
-  geom_histogram(binwidth = 0.3,color="black",aes(fill=churn))+
-  xlab("Age")+
-  ylab("frequency")+
-  ggtitle("Age distribution")
+unique_country<-unique(dataset$country)
+print(unique_country)
+
+country_counts <- table(dataset$country)
+print(country_counts)
 
 
-
-
-
+lbls <- c("Spain", "Germany", "France")
+slices <- c(2331, 2357, 4709)
+pct <- round(slices/sum(slices)*100)
+lbls <- paste(lbls, pct)
+lbls <- paste(lbls,"%",sep="")
+pie(slices,labels = lbls, col=rainbow(length(lbls)),
+    main="Pie Chart of Countries")
