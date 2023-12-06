@@ -11,6 +11,14 @@ unique(dataset)
 #summary dataset
 summary(dataset)
 
+library(ggplot2)
+#bar plot to visualize 'gender' distribution within 'country'
+ggplot(dataset, aes(x = country, fill = gender)) +
+  geom_bar(position = "stack") +       
+  xlab("Country") +
+  ylab("Count") +
+  ggtitle("Gender Distribution Across Countries")
+
 dataset$country<-as.numeric(factor(dataset$country))
 dataset$country
 
@@ -100,13 +108,6 @@ linear_matrix <- table(testing_dataset$churn, linear_predictions)
 confusionMatrix(linear_matrix)
 
 
-library(ggplot2)
-#bar plot to visualize 'gender' distribution within 'country'
-ggplot(dataset, aes(x = country, fill = gender)) +
-  geom_bar(position = "stack") +       
-  xlab("Country") +
-  ylab("Count") +
-  ggtitle("Gender Distribution Across Countries")
 
 unique_country<-unique(dataset$country)
 print(unique_country)
@@ -122,3 +123,5 @@ lbls <- paste(lbls, pct)
 lbls <- paste(lbls,"%",sep="")
 pie(slices,labels = lbls, col=rainbow(length(lbls)),
     main="Pie Chart of Countries")
+
+
