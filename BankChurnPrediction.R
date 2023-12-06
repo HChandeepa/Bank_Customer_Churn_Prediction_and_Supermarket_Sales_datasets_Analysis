@@ -115,7 +115,7 @@ print(unique_country)
 country_counts <- table(dataset$country)
 print(country_counts)
 
-
+#pie chart of the countries
 lbls <- c("Spain", "Germany", "France")
 slices <- c(2331, 2357, 4709)
 pct <- round(slices/sum(slices)*100)
