@@ -35,6 +35,7 @@ ggplot(dataset,aes(x=gender,fill=credit_card))+
   ggtitle("credit card distribution across the country")
 
 
+
 dataset$country<-as.numeric(factor(dataset$country))
 dataset$country
 
@@ -147,4 +148,10 @@ ggplot(dataset,aes(x=estimated_salary))+
   ylab("Frewuency")+
   ggtitle("Estimated salary range")
 
+#density graph to visualize active members 
+ggplot(dataset,aes(x=active_member))+
+  geom_density(color="black",fill="blue")+
+  xlab("Active members")+
+  ylab("Frequency")+
+  ggtitle("Active members of the dataset")
 
