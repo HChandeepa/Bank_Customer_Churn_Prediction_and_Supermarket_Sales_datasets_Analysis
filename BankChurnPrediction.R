@@ -155,3 +155,10 @@ ggplot(dataset,aes(x=active_member))+
   ylab("Frequency")+
   ggtitle("Active members of the dataset")
 
+#density graph to visualize age distribution 
+ggplot(dataset,aes(x=age))+
+  geom_density(color="black",fill="blue")+
+  xlab("Ages")+
+  ylab("Frequency")+
+  ggtitle("Age distribution")
+
