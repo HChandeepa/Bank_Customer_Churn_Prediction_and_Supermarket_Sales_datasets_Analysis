@@ -26,6 +26,15 @@ ggplot(dataset, aes(x = age, y = gender)) +
   ylab("Gender") +
   ggtitle("Gender vs Age Scatter Plot")
 
+
+#bar plot to visualize credit card distribution within genders
+ggplot(dataset,aes(x=gender,fill=credit_card))+
+  geom_bar(position = "stack")+
+  xlab("gender")+
+  ylab("credit card")+
+  ggtitle("credit card distribution across the country")
+
+
 dataset$country<-as.numeric(factor(dataset$country))
 dataset$country
 
@@ -131,6 +140,11 @@ lbls <- paste(lbls,"%",sep="")
 pie(slices,labels = lbls, col=rainbow(length(lbls)),
     main="Pie Chart of Countries")
 
-
+#histogram for the estimated salary
+ggplot(dataset,aes(x=estimated_salary))+
+  geom_histogram(binwidth = 1000,fill="skyblue",color="black")+
+  xlab("Estimated salary")+
+  ylab("Frewuency")+
+  ggtitle("Estimated salary range")
 
 
