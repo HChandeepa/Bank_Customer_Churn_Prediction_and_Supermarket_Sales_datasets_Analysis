@@ -162,3 +162,9 @@ ggplot(dataset,aes(x=age))+
   ylab("Frequency")+
   ggtitle("Age distribution")
 
+#density graph to visualize balances of the bank
+ggplot(dataset,aes(x=balance))+
+  geom_density(color="black",fill="skyblue")+
+  xlab("Balnces")+
+  ylab("Frequencies")+
+  ggtitle("Balances distribution")
